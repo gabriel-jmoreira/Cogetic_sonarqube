@@ -128,7 +128,7 @@ def test_abrir_site_sage():
                         
                     except Exception as menu_error:
                         print(f"   ℹ️ Não foi possível encontrar o menu de perfis. Verificando se já está logado...")
-                        # Tira um screenshot para debug
+                        # Tira um screenshot para debuggggg
                         page.screenshot(path='menu_perfis_erro.png')
                         print("   ℹ️ Screenshot salvo como 'menu_perfis_erro.png'")
                         
