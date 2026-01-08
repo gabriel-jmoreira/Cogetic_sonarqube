@@ -8,13 +8,13 @@ load_dotenv()
 def test_abrir_site_sage():
     with sync_playwright() as p:
         # Abre o navegador (Chromium)
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
 
         # Cria uma nova página
         page = browser.new_page()
 
         # Define um timeout maior para carregamento de páginas
-        page.set_default_timeout(30000)  # 30 segundos
+        page.set_default_timeout(30000)  # 30 segundossss
 
         try:
             # Acessa o site
@@ -80,7 +80,7 @@ def test_abrir_site_sage():
                         page.wait_for_selector(select_selector, state='visible', timeout=10000)
                         
                         # Seleciona a opção pelo texto visível
-                        page.select_option(select_selector, label='Perfil Teste Subunidades')
+                        page.select_option(select_selector, label='Administrador Fiocruz')
                         print("   ✓ Perfil 'Perfil Teste Subunidades' selecionado com sucesso!")
                         
                         # Aguarda um momento para a seleção ser processada
@@ -133,8 +133,8 @@ def test_abrir_site_sage():
                         print("   ℹ️ Screenshot salvo como 'menu_perfis_erro.png'")
                         
                         # Verifica se já está logado (se o menu de perfil não é mais necessário)
-                        if page.get_by_text('SAGE').is_visible():
-                            print("   ✓ Já está logado no perfil desejado.")
+                        if page.get_by_role("heading", name="SAGE").is_visible():
+                            print("✓ Já está logado no SAGE")
                             print("\n[SUCESSO] Teste concluído com sucesso!")
                         else:
                             raise menu_error
